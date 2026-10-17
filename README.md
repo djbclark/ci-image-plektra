@@ -62,7 +62,7 @@ The image targets linux/amd64. The shim is opt-in through `LD_PRELOAD`; it is no
 - Canonical: [forgejo.mit.edu/djbclark/ci-image-plektra](https://forgejo.mit.edu/djbclark/ci-image-plektra)
 - Build mirror: [github.com/djbclark/ci-image-plektra](https://github.com/djbclark/ci-image-plektra), kept because GitHub Actions builds and publishes the GHCR image.
 
-Push changes to both repositories: `git-forgejo -C ~/src/ci-image-plektra push origin main`, then `git -C ~/src/ci-image-plektra push github`.
+Push to Forgejo only: `git-forgejo -C ~/src/ci-image-plektra push origin main`. A Forgejo push mirror (SSH, on every commit and every 8 hours) copies it to GitHub, using a write deploy key that is limited to the GitHub repository. Check it with `forgejo-api GET /repos/djbclark/ci-image-plektra/push_mirrors` (`last_error` must be empty).
 
 ## Related
 
